@@ -1,0 +1,251 @@
+#+title: Learn C
+
+* Learn C
+
+This file shows how I've been followoing the [[https://www.learn-c.org/][Learn C]] tutorials
+
+** Hello World
+
+#+begin_src C
+
+  #include <stdio.h>
+
+    int main()
+    {
+      printf("Hello World!\n");
+      return 0;
+    }
+
+#+end_src
+
+#+RESULTS:
+: Hello World!
+
+** Variables and types
+
+#+begin_src C
+
+  #include <stdio.h>
+
+  int main()
+  {
+    int a = 10;
+    int b = 20;
+    int c = 23;
+    int sum = a + b + c;
+
+    printf("The sum of %d %d and %d is %d\n", a, b, c, sum);
+  }
+
+#+end_src
+
+#+RESULTS:
+: The sum of 10 20 and 23 is 53
+
+** Arrays
+
+#+begin_src C
+
+  #include <stdio.h>
+
+  int main()
+  {
+    int average;
+
+    int grades[3] = {90, 80, 85};
+
+    average = (grades[0] + grades[1] + grades[2]) / 3;
+
+    printf("The average is %d\n", average);
+
+    return 0;
+  }
+
+#+end_src
+
+#+RESULTS:
+: The average is 85
+
+** Multidimensional Arrays
+
+#+begin_src C
+
+  #include <stdio.h>
+
+  int main()
+  {
+    /* TODO: declare the 2D array grades here */
+    int grades[2][5];
+    float sum;
+    int i;
+    int j;
+
+    grades[0][0] = 80;
+    grades[0][1] = 70;
+    grades[0][2] = 65;
+    grades[0][3] = 89;
+    grades[0][4] = 90;
+
+    grades[1][0] = 85;
+    grades[1][1] = 80;
+    grades[1][2] = 80;
+    grades[1][3] = 82;
+    grades[1][4] = 87;
+
+    /* TODO: complete the for loop with appropriate terminating conditions */
+    for (i = 0; i < 2; i++)
+    {
+      sum = 0;
+      for (j = 0; j < 5; j++)
+      {
+        sum += grades[i][j];
+      }
+
+      /* TODO: compute the average marks for subject i */
+      float average = sum / 5;
+
+      printf("The average marks obtained in subject %d is: %.2f\n", i, average);
+    }
+
+    return 0;
+  }
+
+#+end_src
+
+#+RESULTS:
+| The | average | marks | obtained | in | subject | 0 | is: | 78.8 |
+| The | average | marks | obtained | in | subject | 1 | is: | 82.8 |
+
+** Conditions
+
+#+begin_src C
+
+  #include <stdio.h>
+
+  void guessNumber(int guess)
+  {
+    if (guess == 555)
+    {
+      printf("Your guess (%d) is correct!\n", guess);
+    }
+    else if (guess < 555)
+    {
+      printf("Your guess (%d) is too low!\n", guess);
+    }
+    else
+    {
+      printf("Your guess (%d) is too high!\n", guess);
+    };
+  }
+
+  int main()
+  {
+    guessNumber(500);
+    guessNumber(600);
+    guessNumber(555);
+  }
+  
+#+end_src
+
+#+RESULTS:
+| Your | guess | (500) | is | too      | low!  |
+| Your | guess | (600) | is | too      | high! |
+| Your | guess | (555) | is | correct! |       |
+
+** Strings
+
+#+begin_src C
+
+  #include <stdio.h>
+  #include <string.h>
+
+  int main()
+  {
+    /* define first_name */
+    char *first_name = "John";
+
+    /* define last_name */
+    char last_name[] = "Boe";
+    char name[100];
+
+    last_name[0] = 'D';
+    sprintf(name, "%s %s", first_name, last_name);
+    if (strncmp(name, "John Doe", 100) == 0)
+    {
+      printf("Done!\n");
+    }
+
+    printf("%s\n", name);
+    return 0;
+  }
+
+#+end_src
+
+#+RESULTS:
+| Done! |     |
+| John  | Doe |
+
+** For loops
+
+#+begin_src C
+
+  #include <stdio.h>
+
+  int main()
+  {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    int factorial = 1;
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    for (int i = 0; i < len; i++)
+    {
+      factorial *= arr[i];
+    }
+
+    printf("%d\n", factorial);
+    return 0;
+  }
+  
+#+end_src
+
+#+RESULTS:
+: 479001600
+
+** While loops
+
+#+begin_src C
+
+  #include <stdio.h>
+
+  int main()
+  {
+    int array[] = {1, 7, 4, 5, 9, 3, 5, 11, 6, 3, 4};
+    int i = 0;
+
+    while (i < 10)
+    {
+      if (array[i] < 5)
+      {
+        i++;
+        continue;
+      }
+
+      if (array[i] > 10)
+      {
+        break;
+      }
+
+      printf("%d\n", array[i]);
+      i++;
+    }
+
+    return 0;
+  }
+  
+#+end_src
+
+#+RESULTS:
+| 7 |
+| 5 |
+| 9 |
+| 5 |
