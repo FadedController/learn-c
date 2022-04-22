@@ -10,11 +10,11 @@ This file shows how I've been followoing the [[https://www.learn-c.org/][Learn C
 
   #include <stdio.h>
 
-    int main()
-    {
-      printf("Hello World!\n");
-      return 0;
-    }
+  int main()
+  {
+    printf("Hello World!\n");
+    return 0;
+  }
 
 #+end_src
 
